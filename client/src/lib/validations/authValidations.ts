@@ -71,10 +71,18 @@ export const PersonalInfoSchema = z.object({
 
 	dial_code: z.string().nonempty("Select a dial code"),
 
+	// The dial code is picked separately (see PhoneField), so a number
+	// starting with 0 here would double up on it, e.g. dial_code "+234" +
+	// phone_number "08012345678" produces the invalid "+2340801234567"
+	// instead of "+2348012345678".
 	phone_number: z
 		.string()
 		.trim()
 		.regex(/^\d+$/, "Phone number must be digits only")
+		.refine(
+			(value) => !value.startsWith("0"),
+			"Don't start with 0 — the country code already covers it",
+		)
 		.min(7, "Phone number too short")
 		.max(15, "Phone number too long"),
 

@@ -214,6 +214,7 @@ export default function PersonalInfoTab() {
 								<FormControl>
 									<PhoneField
 										name={field.name}
+										label="Phone Number"
 										dialCode={form.watch("dial_code")}
 										number={field.value}
 										disabled={disabled}
@@ -240,6 +241,7 @@ export default function PersonalInfoTab() {
 								<FormControl>
 									<DateField
 										name={field.name}
+										label="Date of Birth"
 										value={field.value}
 										onChange={field.onChange}
 										onBlur={field.onBlur}

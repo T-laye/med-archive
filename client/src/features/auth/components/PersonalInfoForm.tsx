@@ -168,6 +168,7 @@ export default function PersonalInfoForm() {
 								<FormItem>
 									<FormControl>
 										<PhoneField
+											label="Phone Number"
 											name={field.name}
 											// eslint-disable-next-line react-hooks/incompatible-library
 											dialCode={form.watch("dial_code")}
@@ -195,6 +196,7 @@ export default function PersonalInfoForm() {
 									<FormControl>
 										<DateField
 											name={field.name}
+											label="Date of Birth"
 											value={field.value}
 											onChange={field.onChange}
 											onBlur={field.onBlur}

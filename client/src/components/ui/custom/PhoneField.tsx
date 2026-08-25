@@ -1,10 +1,12 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+import { Label } from "@/components/ui/label";
 import { country, getFlagEmoji } from "@/lib/utils/countries";
 
 interface PhoneFieldProps {
 	name: string;
+	label?: string;
 	dialCode: string;
 	number: string | undefined;
 	error?: string | null;
@@ -20,6 +22,7 @@ const PhoneField: React.FC<PhoneFieldProps> = ({
 	dialCode,
 	number,
 	error,
+	label,
 	disabled,
 	className = "",
 	onDialCodeChange,
@@ -31,6 +34,12 @@ const PhoneField: React.FC<PhoneFieldProps> = ({
 
 	return (
 		<div className="space-y-2">
+			{label && (
+				<Label htmlFor={name} className="text-sm font-medium">
+					{label}
+				</Label>
+			)}
+
 			<div
 				className={`flex items-center rounded-[6px] border border-[#F5F5F5] bg-white h-10.75 md:h-12 duration-200 focus-within:border-primary focus-within:shadow-sm
           ${error ? "border-error" : ""}
